@@ -12,7 +12,7 @@
     display: flex;
     align-items:center;
     justify-content: center;
-    background-image: linear-gradient(220deg, #8e40f4, #d640f4, #4070f4);
+    background-image: linear-gradient(220deg, #2b075a, #d640f4,#0f0757);
  }
 
  .container{
@@ -39,7 +39,7 @@
     height: 3px;
     width: 27px;
     border-radius: 8px;
-    background-color: #4070f4;
+    background-color: #d640f4;
  }
  .container form{
      position: relative;
@@ -120,8 +120,8 @@ form .fields .input-field{
 }
 .container form button, .backBtn{
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center; 
     height: 45px;
     max-width: 200px;
     width: 100%;
@@ -130,30 +130,67 @@ form .fields .input-field{
     color: #fff;
     border-radius: 5px;
     margin: 24px 0;
-    background-color: #4070f4;
-    transition: all 0.3s linear;
+    background-color: #7158e2;/*#4070f4;*/
     cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+ 
 }
+ /* --------Button Ripple Effect----------*/
+
+.container form button::before, .backBtn::before{
+    content: '';
+    
+    position: absolute;
+    width: 0px;
+    height: 0px;
+    background-color:  rgb(247, 74, 232);
+    left: var(--xPos);
+    top: var(--yPos);
+    transform: translate(-50%, -50%);
+
+    border-radius: 50%;
+
+    transition: width 0.5s, height 0.5s;
+}
+
+.container form button:hover::before, .backBtn:hover::before{
+    width: 500px;
+    height: 500px;
+}
+
+.btnText, .submitText{
+    position: relative;
+    z-index: 1;
+    
+
+}
+
+/*========================================================================*/
+
+
 .container form button,
 .container form .backBtn{
     font-size: 14px;
     font-weight: 400;
 }
-form button:hover{
-    background-color: #265df2;
 
-}
 form button i,
 form .backBtn i{
     margin: 0 6px;
+    position: relative;
+    z-index: 1;
 }
 form .backBtn i{
     transform: rotate(180deg);
 }
-form .buttons{
+
+form .buttons, button{
     display: flex;
     align-items: center;
 }
+
 form .buttons button, .backBtn{
     margin-right: 14px ;
 }
